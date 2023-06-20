@@ -1,11 +1,13 @@
+{% block content %}
 {% load static %}
+<link rel="stylesheet" href="{% static 'styles/design.css'%}">
 <header class="header header--loggedIn">
     <div class="container">
-        <a href="{% url 'home' %}" class="header__logo">
+        <a href="{% url 'index' %}" class="header__logo">
             <img src="{% static 'images/logo.svg' %}" />
-            <h1>StudyBuddy</h1>
+            <h1>NoteTrove</h1>
         </a>
-        <form class="header__search" method="GET" action="{% url 'home' %}">
+        <form class="header__search" method="GET" action="{% url 'index' %}">
             <label>
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
                     <title>search</title>
@@ -22,7 +24,7 @@
             <!-- Logged In -->
             {% if request.user.is_authenticated %}
             <div class="header__user">
-                <a href="{% url 'update-user' %}">
+                <a href="">
                     <div class="avatar avatar--medium active">
                         <img src="{{request.user.avatar.url}}" />
                     </div>
@@ -38,14 +40,14 @@
             {% else %}
 
             <!-- Not Logged In -->
-            <a href="{% url 'login' %}">
+            <a href="">
                 <img src="{% static 'images/avatar.svg' %}" />
                 <p>Login</p>
             </a>
             {% endif %}
 
             <div class="dropdown-menu">
-                <a href="{% url 'update-user' %}" class="dropdown-link"><svg version="1.1"
+                <a href="" class="dropdown-link"><svg version="1.1"
                         xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
                         <title>tools</title>
                         <path
@@ -53,7 +55,7 @@
                         </path>
                     </svg>
                     Settings</a>
-                <a href="{% url 'logout' %}" class="dropdown-link"><svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                <a href="" class="dropdown-link"><svg version="1.1" xmlns="http://www.w3.org/2000/svg"
                         width="32" height="32" viewBox="0 0 32 32">
                         <title>sign-out</title>
                         <path
@@ -73,7 +75,9 @@
 
 <!-- {% if request.user.is_authenticated %}
 <p>Hello {{request.user}}</p>
-<a href="{% url 'logout' %}">Logout</a>
+<a href="">Logout</a>
 {% else %}
-<a href="{% url 'login' %}">Login</a>
+<a href="">Login</a>
 {% endif %} -->
+<script src="{% static 'js/script.js' %}"></script>
+{% endblock content %}
